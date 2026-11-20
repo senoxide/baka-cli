@@ -5,7 +5,7 @@ system utility cli for gentoo/arch based desktops, written in lua.
 commands are just lua modules and config lives in one file, so it's easy to extend or rip apart. works on systemd and openrc.
 
 ## install
-```
+```bash
 git clone https://github.com/sixteenjune/baka-cli
 cd baka-cli
 chmod +x baka.lua

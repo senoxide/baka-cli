@@ -1,45 +1,41 @@
-# baka-cli
+# baka cli
 
-A small Lua-based system utility CLI for Gentoo/Arch desktops. Commands are Lua modules; configuration is stored in a single file.
+system utility cli for gentoo/arch based desktops, written in lua.
 
-## Quick start
+commands are just lua modules and config lives in one file, so it's easy to extend or rip apart. works on systemd and openrc.
 
-```bash
+## install
+```
 git clone https://github.com/sixteenjune/baka-cli
 cd baka-cli
 chmod +x baka.lua
 ./baka.lua init
 ```
 
-Run `baka help` for full usage. Basic pattern:
+## usage
 
 baka <command> [args]
 
-## Common commands
-
 - init — initial setup or reconfigure
-- help — show commands
 - status — system overview
 - update — sync and update packages
 - rebuild — full system rebuild
 - clean — remove old packages and orphans
-- backup — create timestamped backups of dotfiles and /etc
-- kernel — build and install kernel from /usr/src/linux
-- services — interactive start/stop menu for systemd/OpenRC
+- backup — timestamped backups of dotfiles and /etc
+- kernel — build and install the kernel from /usr/src/linux
+- services — interactive start/stop menu for systemd/openrc
 - cpu, temp, battery, network, storage, ports — system info
-- doctor — checks baka's setup
+- doctor — sanity-check the setup
+- help — list everything
 
-## Creating commands
+## writing your own commands
 
-Copy `commands/_template.lua` to `commands/<name>.lua` and register it in `commands/init.lua`.
-If a command needs distro/init/VPN backends, require those modules inside `M.run` (not at top-level).
+copy `commands/_template.lua` to `commands/<name>.lua` and register it in `commands/init.lua`. if your command needs distro/init/vpn backends, require them inside `M.run`, not at the top level.
 
-## Requirements
+## requirements
 
-- Lua 5.1+
+- lua 5.1+
 - doas or sudo
-- Gentoo or Arch; systemd or OpenRC
+- gentoo or arch; systemd or openrc
 
-Optional: Nerd Font for icons, netbird/tailscale for VPN status, dracut and grub/limine for kernel workflows.
-
-Contributions welcome — open a PR with changes.
+optional: nerd font for icons, netbird/tailscale for vpn status, dracut + grub/limine for the kernel workflow.
